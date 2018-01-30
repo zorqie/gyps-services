@@ -16,6 +16,13 @@ const schema = {
       nameAs: 'venue',
       parentField: 'venue_id',
       childField: '_id',
+    },
+    {
+      service: 'gigs',
+      nameAs: 'shifts',
+      asArray: true,
+      parentField: '_id',
+      childField: 'parent'
     }
   ]  
 }
