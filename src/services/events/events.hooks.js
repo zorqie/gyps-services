@@ -10,6 +10,15 @@ const actsJoin = {
   parentField: 'act_id',
   childField: '_id',
 }
+
+const venueJoin = {
+  service: 'venues',
+  nameAs: 'venue',
+  parentField: 'venue_id',
+  childField: '_id',
+  query: { $select: ['name'] },
+}
+
 const schema = {
   service: 'events',
   include: [
@@ -20,16 +29,11 @@ const schema = {
       asArray: true,
       parentField: '_id',
       childField: 'parent',
-      query: { public: true },
-      include: actsJoin,
+      // query: { public: true },
+      query: { $sort: {start: 1} },
+      include: [actsJoin, venueJoin],
     },
-    {
-      service: 'venues',
-      nameAs: 'venue',
-      parentField: 'venue_id',
-      childField: '_id',
-      query: { $select: ['name'] },
-    }
+    venueJoin,
   ]  
 }
 
