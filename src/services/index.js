@@ -14,8 +14,10 @@ const messages = require('./messages/messages.service.js');
 const tickets = require('./tickets/tickets.service.js');
 const venues = require('./venues/venues.service.js');
 
+const profiles = require('./profiles/profiles.service.js');
+
 module.exports = function(app) {
-	app.configure(mongooseClient);
+  app.configure(mongooseClient);
   app.configure(users);
   app.configure(acts);
   app.configure(venues);
@@ -24,4 +26,5 @@ module.exports = function(app) {
   app.configure(fans);
   app.configure(tickets);
   app.configure(messages);
+  app.configure(profiles);
 };
