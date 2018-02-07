@@ -21,6 +21,7 @@ const schema = {
       service: 'gigs',
       nameAs: 'shifts',
       asArray: true,
+      query: { $sort: {start: 1} },
       parentField: '_id',
       childField: 'parent'
     }
