@@ -38,7 +38,7 @@ module.exports = {
     all: [],
     find: [hooks.populate({schema})],
     get: [hooks.populate({schema})],
-    create: [],
+    create: [hooks.populate({schema})],
     update: [],
     patch: [],
     remove: []
