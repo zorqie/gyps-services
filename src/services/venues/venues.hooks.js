@@ -11,6 +11,13 @@ const schema = {
     query: { $sort: {start: 1} },
     parentField: '_id',
     childField: 'venue_id',
+    include: [{
+      service: 'acts',
+      nameAs: 'acts',
+      asArray: true,
+      parentField: 'act_id',
+      childField: '_id',
+    }],
   }]  
 }
 
