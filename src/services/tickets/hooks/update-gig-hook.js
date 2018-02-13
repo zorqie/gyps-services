@@ -1,6 +1,6 @@
 'use strict';
 
-const GigModel = require('../../gigs/gig-model')
+// const GigModel = require('../../gigs/gig-model')
 
 function updateAttendance(options) {
 	// TODO add options

@@ -6,6 +6,8 @@ const {
 
 const hooks = require('feathers-hooks-common');
 
+const  updateAttendance  = require('./hooks/update-gig-hook')
+
 const schema = {
   service: 'tickets',
   include: [{
@@ -38,10 +40,10 @@ module.exports = {
     all: [],
     find: [hooks.populate({schema})],
     get: [hooks.populate({schema})],
-    create: [hooks.populate({schema})],
+    create: [hooks.populate({schema}), updateAttendance()],
     update: [],
     patch: [],
-    remove: []
+    remove: [updateAttendance()]
   },
 
   error: {
