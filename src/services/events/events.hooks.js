@@ -11,6 +11,13 @@ const actsJoin = {
   childField: '_id',
 }
 
+const configJoin = {
+  service: 'config',
+  nameAs: 'config',
+  parentField: '_id',
+  childField: 'gig_id',
+}
+
 const venueJoin = {
   service: 'venues',
   nameAs: 'venue',
@@ -23,6 +30,7 @@ const schema = {
   service: 'events',
   include: [
     actsJoin,
+    configJoin,
     {
       service: 'gigs',
       nameAs: 'gigs',

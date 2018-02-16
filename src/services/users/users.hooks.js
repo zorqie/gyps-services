@@ -4,6 +4,22 @@ const {
   hashPassword, protect
 } = require('@feathersjs/authentication-local').hooks;
 
+const { disableMultiItemChange, populate } = require('feathers-hooks-common');
+
+const schema = {
+  service: 'users',
+  include: [
+    {
+      service: 'profiles',
+      nameAs: 'profiles',
+      asArray: true,
+      parentField: '_id',
+      childField: 'user_id',
+      // query: { public: true },
+    },
+  ]  
+}
+
 module.exports = {
   before: {
     all: [],
@@ -22,7 +38,7 @@ module.exports = {
       protect('password')
     ],
     find: [],
-    get: [],
+    get: [populate({schema})],
     create: [],
     update: [],
     patch: [],

@@ -16,6 +16,8 @@ const venues = require('./venues/venues.service.js');
 
 const profiles = require('./profiles/profiles.service.js');
 
+const config = require('./config/config.service.js');
+
 module.exports = function(app) {
   app.configure(mongooseClient);
   app.configure(users);
@@ -27,4 +29,5 @@ module.exports = function(app) {
   app.configure(tickets);
   app.configure(messages);
   app.configure(profiles);
+  app.configure(config);
 };
