@@ -28,6 +28,7 @@ const venueJoin = {
 
 const schema = {
   service: 'events',
+  query: { parent: { $exists: false } },
   include: [
     actsJoin,
     configJoin,
