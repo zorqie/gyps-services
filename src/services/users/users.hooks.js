@@ -17,6 +17,14 @@ const schema = {
       childField: 'user_id',
       // query: { public: true },
     },
+    {
+      service: 'tickets',
+      nameAs: 'event_tickets',
+      asArray: true,
+      query: { type: 'Event' },
+      parentField: '_id',
+      childField: 'user_id',
+    },
   ]  
 }
 

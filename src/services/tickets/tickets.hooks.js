@@ -4,7 +4,7 @@ const {
   associateCurrentUser 
 } = require('feathers-authentication-hooks');
 
-const hooks = require('feathers-hooks-common');
+const { iff, isProvider, populate } = require('feathers-hooks-common');
 
 const  updateAttendance  = require('./hooks/update-gig-hook')
 
@@ -27,7 +27,7 @@ const schema = {
 
 module.exports = {
   before: {
-    all: [authenticate('jwt')],
+    all: [iff(isProvider('external'), authenticate('jwt'))],
     find: [queryWithCurrentUser({ as: 'owner_id' })],
     get: [],
     create: [associateCurrentUser({ as: 'owner_id' })],
@@ -38,9 +38,9 @@ module.exports = {
 
   after: {
     all: [],
-    find: [hooks.populate({schema})],
-    get: [hooks.populate({schema})],
-    create: [hooks.populate({schema}), updateAttendance()],
+    find: [populate({schema})],
+    get: [populate({schema})],
+    create: [populate({schema}), updateAttendance()],
     update: [],
     patch: [],
     remove: [updateAttendance()]
